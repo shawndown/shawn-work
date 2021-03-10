@@ -15,3 +15,6 @@
 
 - /documents
   Project related documents
+
+- /Architecture
+  Project Architecture design files
