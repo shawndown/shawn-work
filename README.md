@@ -25,9 +25,9 @@ All project-related file will store under this Directory, the basic structure as
 | ------------- |:-------------| -----:|
 | week 1| Create a project proposal and scope project, please check document project_proposal.pdf | &check;|
 | week 2 |Business logic design, including mobile application architecture design and process design. <br><br>For mobile application artchitecture, please use http://diagram.io/ to load the architecture XML file or read ./Architecture/mobile_application_architecture.jpg.<br><br> For process design, please use http://diagram.io/ to load the process XML files or read <br> ./Architecture/login_process.jpg <br> ./Architecture/logout_process.jpg <br> ./Architecture/load_course_process.jpg <br> ./Architecture/load_map_process.jpg <br> ./Architecture/navigation_process.jpg|&check; |
-| week 3 |Database structure design|&cross; |
-| week 4 |Prototype and UI design|&cross; |
-| week 5 |Mobile APP development ( phase 1 * ) |&cross; |
+| week 3 |Database structure design  & Prototype and UI design|&cross; |
+| week 4 |Mobile APP development ( phase 1 * )|&cross; |
+| week 5 |Mobile APP development ( phase 1 * ) continue |&cross; |
 | week 6 |Mobile APP development ( phase 2 * )|&cross; |
 | week 7 |Mobile APP development ( phase 3 - Part 1 * )|&cross; |
 | week 8 |Mobile APP development ( phase 3 - Part 2 * )|&cross; |
