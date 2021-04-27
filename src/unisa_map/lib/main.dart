@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:time_machine/time_machine.dart';
+
 import './maps.dart';
 import './settings.dart';
 
 const mainColor = const Color(0xFF4166F6);
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await TimeMachine.initialize({'rootBundle': rootBundle});
+
   runApp(App());
 }
 
