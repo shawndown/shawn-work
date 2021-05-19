@@ -1,0 +1,21 @@
+{
+  "name": "web-scraper",
+  "version": "0.1.0",
+  "description": "this is the web scraper to get the course information of unisa students.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web",
+    "scraper",
+    "data"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "jsonfile": "^6.1.0",
+    "selenium-webdriver": "^4.0.0-beta.3",
+    "tabletojson": "^2.0.6"
+  }
+}

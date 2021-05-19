@@ -44,7 +44,8 @@ class _GoogleMaps extends State<GoogleMaps> {
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
   PolylinePoints polylinePoints = PolylinePoints();
-  String googleAPiKey = "{INPUT YOUR GOOGLE API KEY}";
+  String googleAPiKey = "AIzaSyCG0JuU7TZbT_iHEK3uG4NDD-K7L_eYZME";
+  // String googleAPiKey = "{INPUT YOUR GOOGLE API KEY}";
 
   // store current position
   late Position _currentPosition;
