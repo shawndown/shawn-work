@@ -1,6 +1,9 @@
 import 'dart:async';
-
+import 'dart:ui' as ui;
+import 'dart:typed_data';
+import 'dart:io';
 import 'package:flutter/material.dart';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:flutter/services.dart';
@@ -44,7 +47,7 @@ class MapScreen extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: const Text(
-                      'Object Oriented Programming\nRoom 981 \nThe class will start in 30 minutes!'),
+                      'Big data \nThe class will start in 30 minutes!'),
                   behavior: SnackBarBehavior.floating,
                   duration: const Duration(seconds: 10),
                   backgroundColor: Colors.redAccent[200],
@@ -125,18 +128,21 @@ class UnisaMapState extends State<UnisaMap> {
   // store current position
   late Position _currentPosition;
 
+  // custom icon
+  late BitmapDescriptor _pinLocationIcon;
+
   @override
   void initState() {
     super.initState();
 
     timer = Timer.periodic(
-        Duration(seconds: 15),
+        Duration(seconds: 360),
         (Timer t) => {
               print("show snack bar"),
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: const Text(
-                      'Object Oriented Programming\nRoom 981 \nThe class will start in 30 minutes!'),
+                      'Big data \nThe class will start in 30 minutes!'),
                   behavior: SnackBarBehavior.floating,
                   duration: const Duration(seconds: 10),
                   backgroundColor: Colors.redAccent[200],
@@ -155,6 +161,58 @@ class UnisaMapState extends State<UnisaMap> {
     _determinePosition();
     _getCurrentLocation();
 
+    _setMarker();
+  }
+
+  void _setMarker() async {
+    var pinLocationIcon = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 0.5), 'assets/building2.png');
+
+    var c = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/c.png');
+    var w = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/w.png');
+    var gp = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/gp.png');
+    var a = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/a.png');
+    var e = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/e.png');
+    var f = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/f.png');
+    var r = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/r.png');
+    var g = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/g.png');
+    var x = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/x.png');
+    var mc = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/mc.png');
+    var iw = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/iw.png');
+    var q = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/q.png');
+    var h = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/h.png');
+    var mm = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/mm.png');
+    var p = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/p.png');
+    var sct = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/sct.png');
+    var n = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/n.png');
+    var l = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/l.png');
+    var m = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/m.png');
+    var v = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/v.png');
+    var oc = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/oc.png');
+    var b = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 1), 'assets/b.png');
+
     allMakers.add(
       Marker(
         markerId: MarkerId('Unisa Gym'),
@@ -165,6 +223,9 @@ class UnisaMapState extends State<UnisaMap> {
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.81013780276416, 138.62187383330925),
+        infoWindow: InfoWindow(
+          title: 'Unisa Gym',
+        ),
       ),
     );
     allMakers.add(
@@ -177,6 +238,9 @@ class UnisaMapState extends State<UnisaMap> {
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.810876321901596, 138.62064432109077),
+        infoWindow: InfoWindow(
+          title: 'Zambrero Mawson Lakes',
+        ),
       ),
     );
     allMakers.add(
@@ -188,6 +252,10 @@ class UnisaMapState extends State<UnisaMap> {
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.81023470180519, 138.62100651584987),
+        icon: c,
+        infoWindow: InfoWindow(
+          title: 'C Building',
+        ),
       ),
     );
     allMakers.add(
@@ -199,6 +267,10 @@ class UnisaMapState extends State<UnisaMap> {
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.81265084357963, 138.62033567532623),
+        icon: w,
+        infoWindow: InfoWindow(
+          title: 'W Building',
+        ),
       ),
     );
     allMakers.add(
@@ -210,6 +282,10 @@ class UnisaMapState extends State<UnisaMap> {
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.8105088777755, 138.62132301651206),
+        icon: gp,
+        infoWindow: InfoWindow(
+          title: 'GP Building',
+        ),
       ),
     );
     allMakers.add(
@@ -221,6 +297,10 @@ class UnisaMapState extends State<UnisaMap> {
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.8109493191998, 138.62076243483045),
+        icon: a,
+        infoWindow: InfoWindow(
+          title: 'A Building',
+        ),
       ),
     );
     allMakers.add(
@@ -232,6 +312,10 @@ class UnisaMapState extends State<UnisaMap> {
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.81092245072467, 138.6200486791957),
+        icon: e,
+        infoWindow: InfoWindow(
+          title: 'E Building',
+        ),
       ),
     );
     allMakers.add(
@@ -239,10 +323,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('F Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 7;
+          location_place_index = 8;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.81035953828779, 138.6199591360638),
+        icon: f,
+        infoWindow: InfoWindow(
+          title: 'F Building',
+        ),
       ),
     );
     allMakers.add(
@@ -250,10 +338,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('R Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 8;
+          location_place_index = 9;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.810622967812265, 138.61872412487153),
+        icon: r,
+        infoWindow: InfoWindow(
+          title: 'R Building',
+        ),
       ),
     );
     allMakers.add(
@@ -261,10 +353,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('G Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 9;
+          location_place_index = 10;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.810637644367034, 138.61796817735134),
+        icon: g,
+        infoWindow: InfoWindow(
+          title: 'G Building',
+        ),
       ),
     );
     allMakers.add(
@@ -272,10 +368,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('X Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 10;
+          location_place_index = 11;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.8098980640614, 138.61809380502714),
+        icon: x,
+        infoWindow: InfoWindow(
+          title: 'X Building',
+        ),
       ),
     );
     allMakers.add(
@@ -283,10 +383,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('MC Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 11;
+          location_place_index = 12;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.810727622529846, 138.61731865553284),
+        icon: mc,
+        infoWindow: InfoWindow(
+          title: 'MC Building',
+        ),
       ),
     );
     allMakers.add(
@@ -294,10 +398,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('IW Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 12;
+          location_place_index = 13;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.809748830421434, 138.61892775895888),
+        icon: iw,
+        infoWindow: InfoWindow(
+          title: 'IW Building',
+        ),
       ),
     );
     allMakers.add(
@@ -305,10 +413,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('Q Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 13;
+          location_place_index = 14;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.81007802188638, 138.6188529169409),
+        icon: q,
+        infoWindow: InfoWindow(
+          title: 'Q Building',
+        ),
       ),
     );
     allMakers.add(
@@ -316,10 +428,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('H Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 14;
+          location_place_index = 15;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.80936257742281, 138.61975102117896),
+        icon: h,
+        infoWindow: InfoWindow(
+          title: 'H Building',
+        ),
       ),
     );
     allMakers.add(
@@ -327,10 +443,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('MM Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 15;
+          location_place_index = 16;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.80918077890929, 138.6184283210212),
+        icon: mm,
+        infoWindow: InfoWindow(
+          title: 'MM Building',
+        ),
       ),
     );
     allMakers.add(
@@ -338,10 +458,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('P Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 16;
+          location_place_index = 17;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.80866786810513, 138.61866698315893),
+        icon: p,
+        infoWindow: InfoWindow(
+          title: 'P Building',
+        ),
       ),
     );
     allMakers.add(
@@ -349,10 +473,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('SCT Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 17;
+          location_place_index = 18;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.80776170053167, 138.61839108019058),
+        icon: sct,
+        infoWindow: InfoWindow(
+          title: 'SCT Building',
+        ),
       ),
     );
     allMakers.add(
@@ -360,10 +488,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('N Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 18;
+          location_place_index = 19;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.80742975647108, 138.61969279674935),
+        icon: n,
+        infoWindow: InfoWindow(
+          title: 'N Building',
+        ),
       ),
     );
     allMakers.add(
@@ -371,10 +503,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('L Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 19;
+          location_place_index = 20;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.80737050019683, 138.62018996159625),
+        icon: l,
+        infoWindow: InfoWindow(
+          title: 'L Building',
+        ),
       ),
     );
     allMakers.add(
@@ -382,10 +518,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('M Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 20;
+          location_place_index = 21;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.808055236727114, 138.62096243816003),
+        icon: m,
+        infoWindow: InfoWindow(
+          title: 'M Building',
+        ),
       ),
     );
     allMakers.add(
@@ -393,10 +533,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('V Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 21;
+          location_place_index = 22;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.80830762215844, 138.62186856118757),
+        icon: v,
+        infoWindow: InfoWindow(
+          title: 'V Building',
+        ),
       ),
     );
     allMakers.add(
@@ -404,10 +548,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('OC Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 22;
+          location_place_index = 23;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.80924912272739, 138.6208849232125),
+        icon: oc,
+        infoWindow: InfoWindow(
+          title: 'OC Building',
+        ),
       ),
     );
     allMakers.add(
@@ -415,10 +563,14 @@ class UnisaMapState extends State<UnisaMap> {
         markerId: MarkerId('B Building'),
         draggable: false,
         onTap: () {
-          location_place_index = 23;
+          location_place_index = 24;
           _onItemTapped(location_place_index);
         },
         position: LatLng(-34.810628627272614, 138.6219699310834),
+        icon: b,
+        infoWindow: InfoWindow(
+          title: 'B Building',
+        ),
       ),
     );
   }
@@ -1080,38 +1232,24 @@ class _MapTimetableState extends State<MapTimetable> {
       eventProvider: EventProvider.list([
         BasicEvent(
           id: 0,
-          title: 'Object Oriented Programming\nRoom\n981',
+          title: 'Big data',
           color: Colors.blue,
-          start: LocalDate.today().at(LocalTime(7, 0, 0)),
-          end: LocalDate.today().at(LocalTime(10, 0, 0)),
+          start: LocalDate.today().at(LocalTime(6, 10, 0)),
+          end: LocalDate.today().at(LocalTime(7, 0, 0)),
         ),
         BasicEvent(
           id: 1,
-          title: 'Data Driven Web Techologies\nRoom\n801',
+          title: 'Big data',
           color: Colors.redAccent,
-          start: LocalDate.today().at(LocalTime(13, 0, 0)),
-          end: LocalDate.today().at(LocalTime(17, 30, 0)),
-        ),
-        BasicEvent(
-          id: 2,
-          title: 'System Requirements and User Experience\nRoom\n801',
-          color: Colors.yellowAccent,
-          start: LocalDate.today().addDays(1).at(LocalTime(10, 0, 0)),
-          end: LocalDate.today().addDays(1).at(LocalTime(11, 30, 0)),
+          start: LocalDate.today().at(LocalTime(12, 10, 0)),
+          end: LocalDate.today().at(LocalTime(13, 0, 0)),
         ),
         BasicEvent(
           id: 3,
-          title: 'System Requirements Studio\nRoom\n301',
+          title: 'Android game developement',
           color: Colors.purpleAccent,
           start: LocalDate.today().addDays(1).at(LocalTime(12, 0, 0)),
           end: LocalDate.today().addDays(1).at(LocalTime(14, 30, 0)),
-        ),
-        BasicEvent(
-          id: 4,
-          title: 'Data Driven Web Techologies\nRoom\n801',
-          color: Colors.redAccent,
-          start: LocalDate.today().addDays(2).at(LocalTime(10, 0, 0)),
-          end: LocalDate.today().addDays(2).at(LocalTime(11, 30, 0)),
         ),
       ]),
 
@@ -1280,7 +1418,7 @@ class _LocationIntroState extends State<LocationIntro> {
           "Teaching Laboratory Building",
           "C Building",
           "This is the library, where students study.",
-          "",
+          "assets/c.jpg",
         );
       case 3:
         return _createScaffold(
@@ -1301,35 +1439,35 @@ class _LocationIntroState extends State<LocationIntro> {
           "Teaching Laboratory Building",
           "A Building",
           "The A building has (caf, UNI books. Barbara hardy institute, security, prayer rooms, offices.",
-          "",
+          "assets/a.jpg",
         );
       case 6:
         return _createScaffold(
           "Teaching Laboratory Building",
           "E Building",
           "",
-          "",
+          "assets/e.jpg",
         );
       case 7:
         return _createScaffold(
           "Teaching Laboratory Building",
           "D Building",
           "This building contains(school of computer and information science office, lecture theatre, faculty offices, computer science laboratories.)",
-          "",
+          "assets/d.jpg",
         );
       case 8:
         return _createScaffold(
           "Teaching Laboratory Building",
           "F Building",
           "the F building is home to the school of electrical and information engineering.",
-          "",
+          "assets/f.jpg",
         );
       case 9:
         return _createScaffold(
           "Teaching Laboratory Building",
           "R Building",
           "two teaching labs PMB and MI drink machine in foyer all other spaces are dedicated labs.",
-          "",
+          "assets/r.jpg",
         );
       case 10:
         return _createScaffold(
@@ -1364,14 +1502,14 @@ class _LocationIntroState extends State<LocationIntro> {
           "Teaching Laboratory Building",
           "Q Building",
           "The O building is home to the school of mathematics and statistics, with the building mostly comprising of offices for school staff.",
-          "",
+          "assets/q.jpg",
         );
       case 15:
         return _createScaffold(
           "Teaching Laboratory Building",
           "H Building",
           "the H building houses room related mostly to geology, soil and water science.",
-          "",
+          "assets/h.jpg",
         );
       case 16:
         return _createScaffold(

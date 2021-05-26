@@ -49,6 +49,40 @@ flutter:
   uses-material-design: true
 
   assets:
+  - assets/a.jpg
+  - assets/building.png
+  - assets/building1.png
+  - assets/building2.png
+  - assets/c.png
+  - assets/w.png
+  - assets/gp.png
+  - assets/a.png
+  - assets/e.png
+  - assets/f.png
+  - assets/r.png
+  - assets/g.png
+  - assets/x.png
+  - assets/mc.png
+  - assets/iw.png
+  - assets/h.png
+  - assets/q.png
+  - assets/mm.png
+  - assets/p.png
+  - assets/sct.png
+  - assets/n.png
+  - assets/l.png
+  - assets/m.png
+  - assets/v.png
+  - assets/oc.png
+  - assets/b.png
+  - assets/c.jpg
+  - assets/d.jpg
+  - assets/e.jpg
+  - assets/f.jpg
+  - assets/h.jpg
+  - assets/mm.jpg
+  - assets/q.jpg
+  - assets/r.jpg
   - assets/login_icon.png 
   - assets/ml_gym.png
   - assets/zambrer.png

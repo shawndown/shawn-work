@@ -1,0 +1,28 @@
+[
+    [{
+        "Start Date": "01 Mar 2021",
+        "End Date": "05 Apr 2021",
+        "Day": "Mon",
+        "Start Time": "06:10PM",
+        "End Time": "07:00PM",
+        "Room": "",
+        "Instructor(s)": "Mr David Harris"
+    }, {
+        "Start Date": "26 Apr 2021",
+        "End Date": "07 Jun 2021",
+        "Day": "Mon",
+        "Start Time": "06:10PM",
+        "End Time": "07:00PM",
+        "Room": "",
+        "Instructor(s)": "Mr David Harris"
+    }],
+    [{
+        "Start Date": "01 Mar 2021",
+        "End Date": "11 Jun 2021",
+        "Day": "",
+        "Start Time": "",
+        "End Time": "",
+        "Room": "",
+        "Instructor(s)": "Mr David Harris"
+    }]
+]

@@ -1,0 +1,79 @@
+[
+    [{
+        "Start Date": "01 Mar 2021",
+        "End Date": "05 Apr 2021",
+        "Day": "Mon",
+        "Start Time": "12:10PM",
+        "End Time": "01:00PM",
+        "Room": "",
+        "Instructor(s)": "Mr Adam Jenkins"
+    }, {
+        "Start Date": "26 Apr 2021",
+        "End Date": "07 Jun 2021",
+        "Day": "Mon",
+        "Start Time": "12:10PM",
+        "End Time": "01:00PM",
+        "Room": "",
+        "Instructor(s)": "Mr Adam Jenkins"
+    }],
+    [{
+        "Start Date": "04 Mar 2021",
+        "End Date": "08 Apr 2021",
+        "Day": "Thu",
+        "Start Time": "04:10PM",
+        "End Time": "05:00PM",
+        "Room": "MLK/F1-16/18",
+        "Instructor(s)": "Mr Billy Bizilis"
+    }, {
+        "Start Date": "29 Apr 2021",
+        "End Date": "10 Jun 2021",
+        "Day": "Thu",
+        "Start Time": "04:10PM",
+        "End Time": "05:00PM",
+        "Room": "MLK/F1-16/18",
+        "Instructor(s)": "Mr Billy Bizilis"
+    }],
+    [{
+        "Start Date": "01 Mar 2021",
+        "End Date": "05 Apr 2021",
+        "Day": "Mon",
+        "Start Time": "01:10PM",
+        "End Time": "02:00PM",
+        "Room": "MLK/F1-20/22",
+        "Instructor(s)": "Mr Billy Bizilis"
+    }, {
+        "Start Date": "26 Apr 2021",
+        "End Date": "07 Jun 2021",
+        "Day": "Mon",
+        "Start Time": "01:10PM",
+        "End Time": "02:00PM",
+        "Room": "MLK/F1-20/22",
+        "Instructor(s)": "Mr Billy Bizilis"
+    }],
+    [{
+        "Start Date": "03 Mar 2021",
+        "End Date": "07 Apr 2021",
+        "Day": "Wed",
+        "Start Time": "02:10PM",
+        "End Time": "03:00PM",
+        "Room": "MLK/F1-16/18",
+        "Instructor(s)": "Miss Louise Lawrence"
+    }, {
+        "Start Date": "28 Apr 2021",
+        "End Date": "09 Jun 2021",
+        "Day": "Wed",
+        "Start Time": "02:10PM",
+        "End Time": "03:00PM",
+        "Room": "MLK/F1-16/18",
+        "Instructor(s)": "Miss Louise Lawrence"
+    }],
+    [{
+        "Start Date": "01 Mar 2021",
+        "End Date": "11 Jun 2021",
+        "Day": "",
+        "Start Time": "",
+        "End Time": "",
+        "Room": "",
+        "Instructor(s)": ""
+    }]
+]

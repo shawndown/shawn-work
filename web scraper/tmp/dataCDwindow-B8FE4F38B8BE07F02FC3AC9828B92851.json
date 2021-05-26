@@ -1,0 +1,147 @@
+[
+    [{
+        "Start Date": "01 Mar 2021",
+        "End Date": "05 Apr 2021",
+        "Day": "Mon",
+        "Start Time": "10:10AM",
+        "End Time": "12:00PM",
+        "Room": "",
+        "Instructor(s)": "Dr Jing Gao, Dr Josh Chopin, Dr Malgorzata Korolkiewicz, Mr Kevin Sequeira"
+    }, {
+        "Start Date": "26 Apr 2021",
+        "End Date": "07 Jun 2021",
+        "Day": "Mon",
+        "Start Time": "10:10AM",
+        "End Time": "12:00PM",
+        "Room": "",
+        "Instructor(s)": "Dr Malgorzata Korolkiewicz"
+    }],
+    [{
+        "Start Date": "08 Mar 2021",
+        "End Date": "05 Apr 2021",
+        "Day": "Mon",
+        "Start Time": "01:10PM",
+        "End Time": "03:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }, {
+        "Start Date": "26 Apr 2021",
+        "End Date": "07 Jun 2021",
+        "Day": "Mon",
+        "Start Time": "01:10PM",
+        "End Time": "03:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }],
+    [{
+        "Start Date": "09 Mar 2021",
+        "End Date": "06 Apr 2021",
+        "Day": "Tue",
+        "Start Time": "01:10PM",
+        "End Time": "03:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }, {
+        "Start Date": "27 Apr 2021",
+        "End Date": "08 Jun 2021",
+        "Day": "Tue",
+        "Start Time": "01:10PM",
+        "End Time": "03:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }],
+    [{
+        "Start Date": "09 Mar 2021",
+        "End Date": "06 Apr 2021",
+        "Day": "Tue",
+        "Start Time": "09:10AM",
+        "End Time": "11:00AM",
+        "Room": "",
+        "Instructor(s)": ""
+    }, {
+        "Start Date": "27 Apr 2021",
+        "End Date": "08 Jun 2021",
+        "Day": "Tue",
+        "Start Time": "09:10AM",
+        "End Time": "11:00AM",
+        "Room": "",
+        "Instructor(s)": ""
+    }],
+    [{
+        "Start Date": "10 Mar 2021",
+        "End Date": "07 Apr 2021",
+        "Day": "Wed",
+        "Start Time": "09:10AM",
+        "End Time": "11:00AM",
+        "Room": "",
+        "Instructor(s)": ""
+    }, {
+        "Start Date": "28 Apr 2021",
+        "End Date": "09 Jun 2021",
+        "Day": "Wed",
+        "Start Time": "09:10AM",
+        "End Time": "11:00AM",
+        "Room": "",
+        "Instructor(s)": ""
+    }],
+    [{
+        "Start Date": "08 Mar 2021",
+        "End Date": "05 Apr 2021",
+        "Day": "Mon",
+        "Start Time": "03:10PM",
+        "End Time": "05:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }, {
+        "Start Date": "26 Apr 2021",
+        "End Date": "07 Jun 2021",
+        "Day": "Mon",
+        "Start Time": "03:10PM",
+        "End Time": "05:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }],
+    [{
+        "Start Date": "11 Mar 2021",
+        "End Date": "08 Apr 2021",
+        "Day": "Thu",
+        "Start Time": "10:10AM",
+        "End Time": "12:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }, {
+        "Start Date": "29 Apr 2021",
+        "End Date": "10 Jun 2021",
+        "Day": "Thu",
+        "Start Time": "10:10AM",
+        "End Time": "12:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }],
+    [{
+        "Start Date": "09 Mar 2021",
+        "End Date": "06 Apr 2021",
+        "Day": "Tue",
+        "Start Time": "04:10PM",
+        "End Time": "06:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }, {
+        "Start Date": "27 Apr 2021",
+        "End Date": "08 Jun 2021",
+        "Day": "Tue",
+        "Start Time": "04:10PM",
+        "End Time": "06:00PM",
+        "Room": "",
+        "Instructor(s)": ""
+    }],
+    [{
+        "Start Date": "01 Mar 2021",
+        "End Date": "11 Jun 2021",
+        "Day": "",
+        "Start Time": "",
+        "End Time": "",
+        "Room": "",
+        "Instructor(s)": "Dr Jing Gao, Dr Josh Chopin, Dr Malgorzata Korolkiewicz, Mr Kevin Sequeira"
+    }]
+]
