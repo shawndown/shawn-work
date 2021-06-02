@@ -5,6 +5,10 @@ import 'package:time_machine/time_machine.dart';
 import './maps.dart';
 import './settings.dart';
 
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
+import './gloabls.dart' as globals;
+
 const mainColor = const Color(0xFF4166F6);
 
 void main() async {
@@ -52,6 +56,29 @@ class _LoginStatefulWidgetState extends State<LoginStatefulWidget> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  Future<bool> _verify(String user, String password) async {
+    var url = Uri.parse('http://192.168.0.12:3000/auth');
+
+    print(url);
+
+    var response =
+        await http.post(url, body: {'user': user, 'password': password});
+
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    Map<String, dynamic> res = convert.jsonDecode(response.body);
+
+    var status = res['status'].toString();
+
+    if (status == "success") {
+      globals.user_num = user.split("_")[1];
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -125,15 +152,18 @@ class _LoginStatefulWidgetState extends State<LoginStatefulWidget> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
-                        bool isUserVerified =
-                            _emailController.text == 'yuexy003@myunisa.edu.au';
-                        bool isPasswordVerified =
-                            _passwordController.text == '12345678';
-                        print(isUserVerified);
-                        print(isPasswordVerified);
+                      onPressed: () async {
+                        var is_verified = await this._verify(
+                            _emailController.text.toString(),
+                            _passwordController.text.toString());
 
-                        if (!isUserVerified || !isPasswordVerified) {
+                        if (is_verified) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapScreen(),
+                              ));
+                        } else {
                           // set up the button
                           Widget okButton = ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -161,13 +191,51 @@ class _LoginStatefulWidgetState extends State<LoginStatefulWidget> {
                               return alert;
                             },
                           );
-                        } else {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MapScreen(),
-                              ));
                         }
+                        print(is_verified);
+
+                        // bool isUserVerified =
+                        //     _emailController.text == 'yuexy003@myunisa.edu.au';
+                        // bool isPasswordVerified =
+                        //     _passwordController.text == '12345678';
+                        // print(isUserVerified);
+                        // print(isPasswordVerified);
+
+                        // if (!isUserVerified || !isPasswordVerified) {
+                        //   // set up the button
+                        //   Widget okButton = ElevatedButton(
+                        //     style: ElevatedButton.styleFrom(
+                        //       primary: mainColor,
+                        //       padding: EdgeInsets.all(10),
+                        //     ),
+                        //     child: Text("OK"),
+                        //     onPressed: () {
+                        //       Navigator.pop(context);
+                        //     },
+                        //   );
+                        //   // set up the AlertDialog
+                        //   AlertDialog alert = AlertDialog(
+                        //     title: Text("Sorry"),
+                        //     content: Text(
+                        //         "The user email or password is not correct, please try again!"),
+                        //     actions: [
+                        //       okButton,
+                        //     ],
+                        //   );
+                        //   // show the dialog
+                        //   showDialog(
+                        //     context: context,
+                        //     builder: (BuildContext context) {
+                        //       return alert;
+                        //     },
+                        //   );
+                        // } else {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => MapScreen(),
+                        //       ));
+                        // }
                       },
                       child: Text("LOGIN"),
                       style: ElevatedButton.styleFrom(

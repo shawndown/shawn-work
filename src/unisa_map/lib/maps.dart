@@ -4,11 +4,15 @@ import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/material.dart';
 
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:flutter/services.dart';
 import 'package:time_machine/time_machine.dart';
 import 'package:timetable/timetable.dart';
+import 'dart:math';
 
 import 'package:geolocator/geolocator.dart';
 
@@ -16,6 +20,7 @@ import './settings.dart';
 import './main.dart';
 import './navigation.dart';
 import './data.dart';
+import './gloabls.dart' as globals;
 
 const mainColor = const Color(0xFF4166F6);
 int location_place_index = 0;
@@ -1183,7 +1188,18 @@ class MapTimetable extends StatefulWidget {
 
 class _MapTimetableState extends State<MapTimetable> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  late TimetableController<BasicEvent> _controller;
+  TimetableController<BasicEvent> _controller = TimetableController(
+    // A basic EventProvider containing a single event:
+    eventProvider: EventProvider.list([]),
+    // Other (optional) parameters:
+    initialTimeRange: InitialTimeRange.range(
+      startTime: LocalTime(6, 0, 0),
+      endTime: LocalTime(22, 0, 0),
+    ),
+    initialDate: LocalDate.today(),
+    visibleRange: VisibleRange.days(3),
+    firstDayOfWeek: DayOfWeek.monday,
+  );
 
   final List<Data> address = [
     Data(
@@ -1223,65 +1239,78 @@ class _MapTimetableState extends State<MapTimetable> {
     )
   ];
 
+  Future<String> _scrap(String page) async {
+    var url =
+        Uri.parse('http://192.168.0.12:3000/scrap?page=' + page + '.html');
+
+    print(url);
+
+    var response = await http.get(url);
+
+    // print('Response status: ${response.statusCode}');
+    // print('Response body: ${response.body}');
+
+    return response.body;
+  }
+
   @override
   void initState() {
     super.initState();
 
-    _controller = TimetableController(
-      // A basic EventProvider containing a single event:
-      eventProvider: EventProvider.list([
-        BasicEvent(
-          id: 0,
-          title: 'Big data',
-          color: Colors.blue,
-          start: LocalDate.today().at(LocalTime(6, 10, 0)),
-          end: LocalDate.today().at(LocalTime(7, 0, 0)),
-        ),
-        BasicEvent(
-          id: 1,
-          title: 'Big data',
-          color: Colors.redAccent,
-          start: LocalDate.today().at(LocalTime(12, 10, 0)),
-          end: LocalDate.today().at(LocalTime(13, 0, 0)),
-        ),
-        BasicEvent(
-          id: 3,
-          title: 'Android game developement',
-          color: Colors.purpleAccent,
-          start: LocalDate.today().addDays(1).at(LocalTime(12, 0, 0)),
-          end: LocalDate.today().addDays(1).at(LocalTime(14, 30, 0)),
-        ),
-      ]),
+    _scrap(globals.user_num).then((String data) {
+      List<BasicEvent> event_provider = [];
 
-      // // Or even this short example using a Stream:
-      // eventProvider: EventProvider.stream(
-      //   eventGetter: (range) => Stream.periodic(
-      //     Duration(milliseconds: 16),
-      //     (i) {
-      //       final start =
-      //           LocalDate.today().atMidnight() + Period(minutes: i * 2);
-      //       return [
-      //         BasicEvent(
-      //           id: 0,
-      //           title: 'Event',
-      //           color: Colors.blue,
-      //           start: start,
-      //           end: start + Period(hours: 5),
-      //         ),
-      //       ];
-      //     },
-      //   ),
-      // ),
+      Map<String, dynamic> json_data = convert.jsonDecode(data);
+      for (int i = 0; i < json_data['data'].length; i++) {
+        print(json_data['data'][i]);
+        String title = json_data['data'][i]['course'];
 
-      // Other (optional) parameters:
-      initialTimeRange: InitialTimeRange.range(
-        startTime: LocalTime(9, 0, 0),
-        endTime: LocalTime(20, 0, 0),
-      ),
-      initialDate: LocalDate.today(),
-      visibleRange: VisibleRange.days(3),
-      firstDayOfWeek: DayOfWeek.monday,
-    );
+        Color color = Colors.blue;
+
+        switch (i) {
+          case 0:
+            color = Colors.redAccent;
+            break;
+          case 1:
+            color = Colors.yellowAccent;
+            break;
+          case 2:
+            color = Colors.blueAccent;
+            break;
+
+          default:
+        }
+
+        int s_h = int.parse(json_data['data'][i]['start'].split(':')[0]);
+        int s_m = int.parse(json_data['data'][i]['start'].split(':')[1]);
+
+        int e_h = int.parse(json_data['data'][i]['end'].split(':')[0]);
+        int e_m = int.parse(json_data['data'][i]['end'].split(':')[1]);
+
+        LocalDateTime start = LocalDate.today().at(LocalTime(s_h, s_m, 0));
+        LocalDateTime end = LocalDate.today().at(LocalTime(e_h, e_m, 0));
+
+        BasicEvent event = BasicEvent(
+            id: i, title: title, color: color, start: start, end: end);
+
+        event_provider.add(event);
+      }
+
+      // future is completed you can perform your task
+      _controller = TimetableController(
+        // A basic EventProvider containing a single event:
+        eventProvider: EventProvider.list(event_provider),
+        // Other (optional) parameters:
+        initialTimeRange: InitialTimeRange.range(
+          startTime: LocalTime(6, 0, 0),
+          endTime: LocalTime(22, 0, 0),
+        ),
+        initialDate: LocalDate.today(),
+        visibleRange: VisibleRange.days(3),
+        firstDayOfWeek: DayOfWeek.monday,
+      );
+      setState(() {});
+    });
   }
 
   @override
